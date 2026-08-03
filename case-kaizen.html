@@ -3,8 +3,8 @@
 <style>
   :root{
     --ink:#12151a; --soft:#4a5260; --line:#e3e7ee; --bg:#f5f7fa;
-    --brand:#d92d20; --accent:#1570ef; --ok:#12855b;
-    --radius:12px; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.08);
+    --brand:#d92d20; --accent:#1570ef;
+    --radius:12px;
   }
   *{box-sizing:border-box}
   body{
@@ -12,220 +12,102 @@
     font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:960px; margin:0 auto; padding:0 24px}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 24px}
   h1,h2,h3{letter-spacing:-.015em; line-height:1.2}
-  h1{font-size:clamp(30px,5vw,46px); margin:0 0 14px}
-  h2{font-size:clamp(22px,3vw,30px); margin:56px 0 18px}
-  h3{font-size:19px; margin:28px 0 10px}
+  h1{font-size:clamp(28px,4.6vw,42px); margin:0 0 12px}
+  h2{font-size:clamp(21px,2.8vw,28px); margin:0 0 18px}
+  h3{font-size:17px; margin:0 0 10px}
   p{margin:0 0 16px}
   a{color:var(--accent)}
 
-  .hero{background:linear-gradient(135deg,#12151a,#1e2530); color:#fff; padding:64px 0 56px}
+  .hero{background:linear-gradient(135deg,#12151a,#1e2530); color:#fff; padding:52px 0 44px}
   .hero h1{color:#fff}
-  .hero p{color:#b6bfcd; font-size:18px; max-width:640px}
-  .tag{
-    display:inline-block; background:rgba(217,45,32,.16); color:#ff8a80;
-    border:1px solid rgba(217,45,32,.4); border-radius:999px;
-    padding:5px 14px; font-size:13px; font-weight:600; margin-bottom:18px;
-  }
-  .meta{display:flex; flex-wrap:wrap; gap:34px; margin-top:30px}
-  .meta div{font-size:14px; color:#8e99a9}
-  .meta b{display:block; color:#fff; font-size:17px; font-weight:700; margin-top:3px}
+  .hero p{color:#b6bfcd; font-size:17px; max-width:660px; margin:0}
+  .meta{display:flex; flex-wrap:wrap; gap:32px; margin-top:26px}
+  .meta div{font-size:13.5px; color:#8e99a9}
+  .meta b{display:block; color:#fff; font-size:16px; font-weight:700; margin-top:3px}
+  .meta a{color:#fff; border-bottom:1px solid rgba(255,255,255,.35)}
 
-  .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin:34px 0}
-  .fact{border:1px solid var(--line); border-radius:var(--radius); padding:18px}
-  .fact b{display:block; font-size:26px; font-weight:800}
-  .fact span{font-size:13.5px; color:var(--soft)}
-
-  figure{margin:26px 0}
+  .shots{padding:44px 0 8px}
+  figure{margin:0 0 34px}
   figure img{width:100%; border:1px solid var(--line); border-radius:var(--radius); display:block}
   figcaption{font-size:13.5px; color:var(--soft); margin-top:9px}
+  .pair{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  @media(max-width:760px){.pair{grid-template-columns:1fr}}
 
-  .cols{display:grid; grid-template-columns:1fr 1fr; gap:26px}
-  @media(max-width:700px){.cols{grid-template-columns:1fr}}
+  .divider{border:0; border-top:1px solid var(--line); margin:26px 0 44px}
+  .label{
+    font-size:12px; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--soft); font-weight:700; margin:0 0 14px;
+  }
 
-  .task{border-left:3px solid var(--brand); padding:2px 0 2px 18px; margin:22px 0}
-  .task b{display:block; margin-bottom:4px}
-  .task span{color:var(--soft); font-size:15px}
+  .tech{background:var(--bg); border-top:1px solid var(--line); padding:52px 0 60px; margin-top:20px}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:8px}
+  @media(max-width:760px){.cols{grid-template-columns:1fr}}
+  ul{padding-left:20px; margin:0 0 18px} li{margin-bottom:8px}
+  code{background:#fff; border:1px solid var(--line); padding:1px 6px; border-radius:5px; font-size:13.5px}
 
-  .note{background:var(--bg); border-radius:var(--radius); padding:20px 22px; margin:26px 0; font-size:15px}
+  .nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin:0 0 30px}
+  .num{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:16px}
+  .num b{display:block; font-size:23px; font-weight:800}
+  .num span{font-size:13px; color:var(--soft)}
+
+  .note{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; margin-top:22px; font-size:14.5px}
   .note b{color:var(--ink)}
 
-  ul{padding-left:20px; margin:0 0 16px} li{margin-bottom:7px}
-  code{background:var(--bg); padding:2px 6px; border-radius:5px; font-size:14px}
-
-  footer{border-top:1px solid var(--line); margin-top:64px; padding:26px 0 60px; font-size:14px; color:var(--soft)}
+  footer{padding:24px 0 56px; font-size:13.5px; color:var(--soft)}
 </style>
 
 <div class="hero">
   <div class="wrap">
-    <span class="tag">Демо-проект команды</span>
-    <h1>КАЙДЗЕН — магазин расходников для японских авто</h1>
-    <p>Интернет-магазин автозапчастей на OpenCart: свой дизайн, каталог на 444 позиции,
-       подбор по артикулу и OEM-номеру, рабочая корзина и оформление заказа.</p>
+    <h1>КАЙДЗЕН — интернет-магазин автозапчастей</h1>
+    <p>Магазин расходников для японских авто на OpenCart. Своя тема, каталог на 444 позиции,
+       подбор детали по артикулу, OEM-номеру и коду двигателя.</p>
     <div class="meta">
-      <div>Платформа<b>ocStore 3.0.3.7 (OpenCart)</b></div>
+      <div>Платформа<b>ocStore 3.0.3.7</b></div>
       <div>Дизайн<b>собственная тема</b></div>
-      <div>Роли<b>дизайн + разработка</b></div>
-      <div>Срок<b>один рабочий цикл</b></div>
-      <div>Код<b><a href="https://github.com/aleksandrpolyvyannyy-oss/opencart-demo-kaizen" style="color:#fff;border-bottom:1px solid rgba(255,255,255,.35)">на GitHub</a></b></div>
+      <div>Каталог<b>444 товара</b></div>
+      <div>Код<b><a href="https://github.com/aleksandrpolyvyannyy-oss/opencart-demo-kaizen">на GitHub</a></b></div>
     </div>
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap shots">
 
-  <div class="note">
-    <b>Что это за проект.</b> Это наша собственная демонстрационная работа, а не заказ клиента.
-    Мы собрали её, чтобы показать полный цикл сборки магазина на OpenCart: от структуры
-    каталога до вёрстки своей темы и наполнения товарами. Магазин развёрнут локально,
-    заказы в нём не обрабатываются.
-  </div>
-
-  <h2>Задача</h2>
-  <p>Показать, что мы делаем магазин на OpenCart под ключ, а не просто ставим готовый шаблон.
-     Ниша выбрана специально сложная — автозапчасти. Здесь покупатель ищет не «красивый товар»,
-     а конкретную деталь по номеру, и витрина обязана это поддерживать.</p>
-
-  <div class="task">
-    <b>Каталог должен быть настоящим</b>
-    <span>Не десять карточек-заглушек, а объём, на котором видно работу фильтров, пагинации и поиска.</span>
-  </div>
-  <div class="task">
-    <b>Поиск по артикулу и OEM-номеру</b>
-    <span>Ключевой сценарий в запчастях: клиент вводит номер с коробки, а не название детали.</span>
-  </div>
-  <div class="task">
-    <b>Свой дизайн, а не дефолтная тема</b>
-    <span>Стандартный шаблон OpenCart узнаётся с первого взгляда и обесценивает работу.</span>
-  </div>
-
-  <h2>Что получилось</h2>
-  <div class="facts">
-    <div class="fact"><b>444</b><span>товара с фото</span></div>
-    <div class="fact"><b>14</b><span>категорий в дереве</span></div>
-    <div class="fact"><b>66</b><span>брендов</span></div>
-    <div class="fact"><b>1674</b><span>заполненных характеристики</span></div>
-    <div class="fact"><b>608</b><span>ЧПУ-адресов</span></div>
-    <div class="fact"><b>3</b><span>типа номеров в подборе</span></div>
-  </div>
+  <p class="label">Витрина</p>
 
   <figure>
     <img src="screenshots-web/01-glavnaya.jpg" alt="Главная страница магазина КАЙДЗЕН">
-    <figcaption>Главная: подбор по автомобилю, блок рекомендуемых товаров, плитки категорий.</figcaption>
+    <figcaption>Главная: подбор по номеру детали, рекомендуемые товары, плитки категорий.</figcaption>
   </figure>
-
-  <h2>Дизайн</h2>
-  <p>Тема написана поверх штатной: переопределены шапка, подвал, главная, список категорий
-     и карточка товара, плюс собственный CSS. Стандартную бутстраповскую синеву убрали,
-     цветовая пара — графит и красный.</p>
-
-  <div class="cols">
-    <div>
-      <h3>Решения по интерфейсу</h3>
-      <ul>
-        <li>Поиск в шапке подписан «Артикул, OEM-номер или название детали» — сразу задаёт сценарий.</li>
-        <li>Блок подбора по номеру детали вынесен на первый экран.</li>
-        <li>В карточке списка выведены артикул и наличие — в запчастях по ним и выбирают.</li>
-        <li>Наличие помечено цветной точкой: зелёная — на складе, серая — под заказ.</li>
-        <li>Шрифты системные, без внешних запросов к Google Fonts.</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Что пришлось доработать в движке</h3>
-      <ul>
-        <li>Штатный OpenCart не отдаёт в список товаров ни артикул, ни остаток — расширили контроллер категории.</li>
-        <li>Формат цен переведён на рубль без копеек: <code>3230 ₽</code> вместо <code>3230.00р.</code></li>
-        <li>Со страницы убраны пустые штатные модули, ссылавшиеся на удалённые демо-товары.</li>
-      </ul>
-    </div>
-  </div>
 
   <figure>
     <img src="screenshots-web/02-katalog.jpg" alt="Страница категории с товарами">
-    <figcaption>Категория: боковое дерево со счётчиками, сортировка, вывод артикула и наличия в каждой карточке.</figcaption>
+    <figcaption>Категория: дерево со счётчиками, сортировка, артикул и наличие в каждой карточке.</figcaption>
   </figure>
 
   <figure>
     <img src="screenshots-web/03-tovar.jpg" alt="Карточка товара">
-    <figcaption>Карточка товара: таблица характеристик с применимостью, вкладки описания и характеристик.</figcaption>
+    <figcaption>Карточка товара: характеристики с применимостью, вкладки описания и характеристик.</figcaption>
   </figure>
-
-  <h2>Каталог и данные</h2>
-  <p>Каталог собран из 10 товарных групп: масляные, воздушные и топливные фильтры, свечи
-     зажигания, ремни ГРМ, тормозные колодки и диски, моторные и трансмиссионные масла,
-     тормозная жидкость.</p>
-  <p>У каждой позиции заполнены артикул, бренд, тип, применимость к моделям и список
-     OEM-номеров — всего 1674 значения характеристик. Именно они дают работающий поиск
-     по номеру и осмысленные фильтры, а не просто «красивую» карточку.</p>
-
-  <div class="note">
-    <b>Про заливку каталога.</b> В OpenCart нет встроенного импорта товаров, а готовые модули
-    платные и на каждый магазин их приходится покупать. Мы написали свой загрузчик, который
-    пишет напрямую в таблицы движка: категории, бренды, товары, характеристики, изображения
-    и ЧПУ. На реальном заказе это означает, что каталог любого объёма заливается за один
-    прогон и повторяется одной командой, если данные обновились.
-  </div>
-
-  <h2>Подбор запчасти по номеру</h2>
-  <p>Главный сценарий в запчастях: клиент держит в руках снятую деталь и вводит номер
-     с неё. Штатный поиск OpenCart ищет по названию и описанию и на такие запросы
-     почти не отвечает, поэтому подбор написан отдельно — свой контроллер, модель
-     и шаблон.</p>
-
-  <div class="cols">
-    <div>
-      <h3>Что ищет</h3>
-      <ul>
-        <li>артикул продавца — <code>C-119</code></li>
-        <li>OEM-номер производителя — <code>90915-10010</code></li>
-        <li>код двигателя или шасси — <code>1KR</code>, <code>ZJ-VE</code></li>
-        <li>плюс фильтр по типу детали, список строится из реального каталога со счётчиками</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Что учтено</h3>
-      <ul>
-        <li>Номера нормализуются: <code>90915-10010</code> и <code>9091510010</code> дают
-            одинаковый результат — люди вводят и так, и так.</li>
-        <li>Позиции со склада показываются выше: по неликвиду клиент уходит к конкуренту.</li>
-        <li>Пустая выдача подсказывает убрать фильтр по типу, а не просто говорит «ничего нет».</li>
-      </ul>
-    </div>
-  </div>
 
   <figure>
-    <img src="screenshots-web/06-podbor.jpg" alt="Страница подбора запчасти по номеру">
-    <figcaption>Подбор по коду двигателя <code>1KR</code>: две подходящие позиции.</figcaption>
+    <img src="screenshots-web/06-podbor.jpg" alt="Подбор запчасти по номеру">
+    <figcaption>Подбор по коду двигателя <code>1KR</code>. Ищет также по артикулу и OEM-номеру,
+      дефисы и пробелы значения не имеют.</figcaption>
   </figure>
-
-  <div class="note">
-    <b>Честно про каскад «марка — модель — год».</b> Такой селектор мы делать не стали.
-    В исходных данных применимость записана кодами двигателей и шасси
-    (<code>1KR/K3/1NR</code>, <code>ZJ-VE</code>, <code>YARIS GXPA16</code>), а не парой
-    марка-модель, и марка распознаётся лишь у части позиций. Красивый каскад на таких
-    данных возвращал бы пустоту почти на любой выбор. Мы предпочли сделать то, что
-    реально работает, а для каскада нужен отдельный справочник применимости — это
-    самостоятельная задача, и на реальном заказе мы её так и оцениваем.
-  </div>
-
-  <h2>Корзина и заказ</h2>
-  <p>Корзина, расчёт суммы и оформление заказа рабочие. Товар добавляется, количество меняется,
-     итог пересчитывается — проверено на живом магазине, а не заявлено на словах.</p>
 
   <figure>
     <img src="screenshots-web/04-korzina.jpg" alt="Корзина покупок">
     <figcaption>Корзина: позиции, количество, пересчёт итога.</figcaption>
   </figure>
 
-  <h2>Админка</h2>
-  <p>Панель управления полностью на русском. Товары, категории, бренды и характеристики
-     редактируются штатными средствами — владелец магазина не зависит от разработчика
-     в ежедневной работе.</p>
+  <hr class="divider">
+  <p class="label">Панель управления</p>
 
   <figure>
     <img src="screenshots-web/07-admin-panel.jpg" alt="Админка: панель состояния">
-    <figcaption>Панель состояния: сводка по заказам, продажам и покупателям.</figcaption>
+    <figcaption>Панель состояния: заказы, продажи, покупатели.</figcaption>
   </figure>
 
   <figure>
@@ -235,49 +117,94 @@
 
   <figure>
     <img src="screenshots-web/09-admin-harakteristiki.jpg" alt="Админка: характеристики товара">
-    <figcaption>Карточка товара, вкладка «Характеристики»: бренд, тип, применимость и OEM-номера
-      правятся вручную. Именно по этим полям работает подбор.</figcaption>
+    <figcaption>Характеристики товара: бренд, тип, применимость и OEM-номера. По этим полям работает подбор.</figcaption>
   </figure>
 
-  <div class="cols">
-    <div>
-      <figure>
-        <img src="screenshots-web/08-admin-kategorii.jpg" alt="Админка: категории">
-        <figcaption>Дерево категорий.</figcaption>
-      </figure>
-    </div>
-    <div>
-      <figure>
-        <img src="screenshots-web/10-admin-atributy.jpg" alt="Админка: справочник характеристик">
-        <figcaption>Справочник характеристик.</figcaption>
-      </figure>
-    </div>
+  <div class="pair">
+    <figure>
+      <img src="screenshots-web/08-admin-kategorii.jpg" alt="Админка: категории">
+      <figcaption>Дерево категорий.</figcaption>
+    </figure>
+    <figure>
+      <img src="screenshots-web/10-admin-atributy.jpg" alt="Админка: справочник характеристик">
+      <figcaption>Справочник характеристик.</figcaption>
+    </figure>
   </div>
 
   <figure>
     <img src="screenshots-web/11-admin-brendy.jpg" alt="Админка: производители">
-    <figcaption>66 брендов заведены отдельными записями — по ним работает фильтр и страницы производителей.</figcaption>
+    <figcaption>66 брендов отдельными записями — по ним работает фильтр и страницы производителей.</figcaption>
   </figure>
 
-  <h2>Технические детали</h2>
-  <ul>
-    <li>ocStore 3.0.3.7 — русская сборка OpenCart, PHP 8.0, MariaDB 10.11, Apache с FastCGI.</li>
-    <li>ЧПУ включены и работают через <code>mod_rewrite</code>: <code>/tormoznye-kolodki</code>,
-        <code>/filtr-maslyanyy-c-119-vic-c-119</code>.</li>
-    <li>Своя тема лежит отдельной папкой и не ломает обновление движка.</li>
-    <li>Правки контроллера прокомментированы — следующий разработчик поймёт, что и зачем менялось.</li>
-  </ul>
+</div>
 
-  <div class="note">
-    <b>Честно о версии.</b> ocStore 3.0.3.7 работает на Twig 2, а эта ветка снята с поддержки
-    и имеет известные уязвимости. Для демо это не критично, но при боевом запуске мы
-    проговариваем это с заказчиком и предлагаем либо OpenCart 4, либо обновление зависимостей.
-    Считаем правильным сказать об этом до старта, а не после.
+<div class="tech">
+  <div class="wrap">
+    <h2>На чём сделано</h2>
+
+    <div class="nums">
+      <div class="num"><b>444</b><span>товара с фото</span></div>
+      <div class="num"><b>14</b><span>категорий</span></div>
+      <div class="num"><b>66</b><span>брендов</span></div>
+      <div class="num"><b>1674</b><span>характеристики</span></div>
+      <div class="num"><b>608</b><span>ЧПУ-адресов</span></div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h3>Стек</h3>
+        <ul>
+          <li><b>ocStore 3.0.3.7</b> — русская сборка OpenCart</li>
+          <li><b>PHP 8.0</b> через FastCGI, сборка NTS</li>
+          <li><b>MariaDB 10.11</b></li>
+          <li><b>Apache</b> с <code>mod_rewrite</code> — нужен для ЧПУ</li>
+          <li><b>Twig 2</b> — шаблонизатор движка</li>
+          <li><b>Python</b> — сбор и подготовка каталога</li>
+        </ul>
+
+        <h3>Что взято готовым</h3>
+        <ul>
+          <li>сам движок и его панель управления</li>
+          <li>Bootstrap 3 и Font Awesome из поставки OpenCart</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Что написано нами</h3>
+        <ul>
+          <li><b>Тема магазина.</b> Шапка, подвал, главная, список категорий, карточка
+              товара, поиск и собственный CSS. Шрифты системные, без внешних запросов.</li>
+          <li><b>Подбор запчасти.</b> Отдельный контроллер, модель и шаблон: поиск по
+              артикулу, OEM-номеру и коду двигателя с нормализацией номеров
+              (<code>90915-10010</code> и <code>9091510010</code> дают один результат).
+              Штатный поиск OpenCart ищет по названию и на такие запросы не отвечает.</li>
+          <li><b>Правка контроллера категории.</b> Движок не отдаёт в список товаров ни
+              артикул, ни остаток — добавили, в запчастях выбирают именно по ним.</li>
+          <li><b>Загрузчик каталога.</b> Импорта товаров в OpenCart нет, готовые модули
+              платные. Свой скрипт пишет напрямую в таблицы: категории, бренды, товары,
+              характеристики, изображения и ЧПУ. Каталог любого объёма заливается
+              за один прогон и повторяется одной командой.</li>
+          <li><b>Формат цен</b> переведён на рубль без копеек: <code>3230 ₽</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Оговорки без прикрас.</b> Каскад «марка — модель — год» не делали: в исходных
+      данных применимость записана кодами двигателей и шасси
+      (<code>1KR/K3/1NR</code>, <code>ZJ-VE</code>), а не парой марка-модель, и такой
+      селектор возвращал бы пустоту почти на любой выбор — для него нужен отдельный
+      справочник применимости. ocStore 3.0.3.7 работает на Twig 2, ветка снята
+      с поддержки и имеет известные уязвимости: при боевом запуске это проговаривается
+      с заказчиком до старта. Почта и платёжные шлюзы не подключались, заказы
+      не обрабатываются.
+    </div>
+
+    <footer>
+      Демонстрационный проект. Название магазина, контакты и цены условные.
+      Номенклатура — общедоступные артикулы, OEM-номера и данные применимости.
+      Все тексты витрины и описания товаров написаны нами.
+      Исходники: <a href="https://github.com/aleksandrpolyvyannyy-oss/opencart-demo-kaizen">github.com/aleksandrpolyvyannyy-oss/opencart-demo-kaizen</a>
+    </footer>
   </div>
-
-  <footer>
-    Демонстрационный проект. Название магазина, контакты и цены условные, заказы не обрабатываются.
-    Номенклатура — общедоступные артикулы, OEM-номера и данные применимости.
-    Все тексты витрины и описания товаров написаны нами.
-  </footer>
 </div>
