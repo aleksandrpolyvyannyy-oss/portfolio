@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Сайт кондитера на WordPress — кейс</title>
+<meta name="description" content="Сайт для частного кондитера на WordPress: витрина работ, цены, приём заявок и понятная админка, в которой клиент сам добавляет торты.">
+<style>
+:root{
+  --paper:#FAF6EE; --card:#fff; --ink:#201E1B; --muted:#6F6A62;
+  --matcha:#6E7F4E; --hurma:#E4622C; --line:#E6E0D4;
+  --shadow:0 2px 6px rgba(32,30,27,.05), 0 18px 40px -24px rgba(32,30,27,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root{--paper:#15140F; --card:#1E1C17; --ink:#F3EFE5; --muted:#A29B8F;
+        --matcha:#9BB07A; --hurma:#F5834F; --line:#302C24;
+        --shadow:0 2px 6px rgba(0,0,0,.5), 0 18px 44px -26px rgba(0,0,0,.9);}
+}
+:root[data-theme="dark"]{--paper:#15140F; --card:#1E1C17; --ink:#F3EFE5; --muted:#A29B8F;
+  --matcha:#9BB07A; --hurma:#F5834F; --line:#302C24;}
+:root[data-theme="light"]{--paper:#FAF6EE; --card:#fff; --ink:#201E1B; --muted:#6F6A62;
+  --matcha:#6E7F4E; --hurma:#E4622C; --line:#E6E0D4;}
+*{box-sizing:border-box}
+body{margin:0; padding:0 20px 70px; background:var(--paper); color:var(--ink);
+  font:400 17px/1.6 'Segoe UI',system-ui,-apple-system,Roboto,sans-serif; letter-spacing:-.005em}
+.wrap{max-width:1000px; margin:0 auto}
+h1,h2,h3{font-weight:700; letter-spacing:-.03em; margin:0; text-wrap:balance}
+p{text-wrap:pretty}
+header{padding:52px 0 26px; border-bottom:1px solid var(--line)}
+.tag{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--hurma); margin-bottom:14px}
+h1{font-size:clamp(30px,4.6vw,50px); line-height:1.05}
+.lead{font-size:19px; color:var(--muted); margin:16px 0 0; max-width:62ch}
+.meta{display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 0; padding:0; list-style:none}
+.meta li{background:var(--card); border:1px solid var(--line); border-radius:99px;
+  padding:9px 16px; font-size:14.5px; font-weight:600}
+.meta li.acc{background:var(--matcha); border-color:var(--matcha); color:#fff}
+section{padding:46px 0 0}
+h2{font-size:clamp(23px,2.9vw,32px); margin-bottom:8px}
+.sub{color:var(--muted); font-size:16.5px; margin:0 0 22px; max-width:64ch}
+figure{margin:0 0 26px; background:var(--card); border:1px solid var(--line);
+  border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
+figure img{width:100%; height:auto; display:block}
+figcaption{padding:14px 18px; font-size:15px; color:var(--muted); border-top:1px solid var(--line)}
+figcaption b{color:var(--ink); font-weight:600}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+.cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:20px}
+.box{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px}
+.box h3{font-size:17.5px; margin-bottom:7px}
+.box p{margin:0; color:var(--muted); font-size:15.5px}
+.box .n{font-size:28px; font-weight:700; color:var(--hurma); letter-spacing:-.03em; display:block; margin-bottom:4px}
+ul.plain{padding-left:22px; color:var(--muted)} ul.plain li{margin:7px 0}
+ul.plain b{color:var(--ink)}
+.note{border-left:3px solid var(--matcha); padding:4px 0 4px 18px; color:var(--muted); margin:22px 0}
+footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:14.5px}
+a{color:var(--hurma)}
+@media (max-width:760px){ .two{grid-template-columns:1fr} body{padding-bottom:50px} header{padding:34px 0 20px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="tag">Кейс · WordPress</span>
+  <h1>Сайт частного кондитера<br>с админкой, в которой она сама всё меняет</h1>
+  <p class="lead">Витрина работ, цены, приём заявок — и понятная панель управления: добавить новый торт можно так же просто, как выложить пост, без разработчика и без вёрстки.</p>
+  <ul class="meta">
+    <li class="acc">WordPress</li>
+    <li>Своя тема</li>
+    <li>22 работы перенесены</li>
+    <li>Заявки в один клик</li>
+    <li>Мобильная версия</li>
+  </ul>
+</header>
+
+<section>
+  <h2>Задача</h2>
+  <p class="sub">У кондитера из Пушкина есть группа ВКонтакте с витриной товаров и живой аудиторией, но нет сайта. Заказы принимаются в личных сообщениях, цены приходится повторять каждому.</p>
+  <div class="cols">
+    <div class="box"><span class="n">22</span><h3>работы</h3><p>Перенесены из витрины ВК вместе с фотографиями и ценами.</p></div>
+    <div class="box"><span class="n">4</span><h3>категории</h3><p>Бенто, торты, свадебные и капкейки — фильтры на сайте строятся из них автоматически.</p></div>
+    <div class="box"><span class="n">0</span><h3>строк кода для клиента</h3><p>Новый торт добавляется через обычную форму: название, фото, цена.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Как выглядит сайт</h2>
+  <p class="sub">Первый экран отвечает на главные вопросы сразу: что, где, от какой цены и как быстро. Дальше — витрина, где самые дорогие работы занимают крупные плитки.</p>
+  <figure>
+    <img src="img/front.jpg" alt="Главная страница сайта кондитера: заголовок, цены, витрина работ" loading="lazy">
+    <figcaption><b>Главная страница.</b> Фильтры по категориям, клик по фото открывает его крупно, под каждой работой — цена и кнопка «Хочу такой».</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Панель управления</h2>
+  <p class="sub">Главное в этом проекте — не дизайн, а то, что владелец справляется сам. Ниже — реальные экраны админки.</p>
+
+  <figure>
+    <img src="img/a1-torty.jpg" alt="Раздел «Торты» в админке WordPress со списком из 22 работ" loading="lazy">
+    <figcaption><b>Раздел «Торты».</b> Все работы списком. Кнопка «Новый торт» — и добавляется ещё одна позиция, которая сразу появляется на сайте в нужной категории.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="img/a2-editor.jpg" alt="Редактор торта: заголовок, изображение и поле цены" loading="lazy">
+    <figcaption><b>Редактор работы.</b> Три понятных поля: название, фотография и цена в рублях. Ни настроек, ни кода — специально убрано всё лишнее.</figcaption>
+  </figure>
+
+  <div class="two">
+    <figure>
+      <img src="img/a3-zayavki.jpg" alt="Раздел «Заявки» в админке" loading="lazy">
+      <figcaption><b>Заявки.</b> Каждая заявка с сайта сохраняется здесь и не может потеряться в почте.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/a4-media.jpg" alt="Медиатека с фотографиями тортов" loading="lazy">
+      <figcaption><b>Медиатека.</b> Фотографии перенесены из группы ВКонтакте.</figcaption>
+    </figure>
+  </div>
+
+  <figure>
+    <img src="img/a5-console.jpg" alt="Консоль администратора WordPress" loading="lazy">
+    <figcaption><b>Консоль.</b> Привычный интерфейс WordPress на русском — тот же, что у миллионов сайтов, поэтому подсказку легко найти в интернете.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Что сделано под капотом</h2>
+  <ul class="plain">
+    <li><b>Своя тема</b>, а не готовый шаблон: вёрстка, стили и скрипты написаны под этот проект.</li>
+    <li><b>Отдельный тип записей «Торты»</b> — работы не смешиваются с новостями и статьями, у них своя структура и свой адрес.</li>
+    <li><b>Поле цены</b> прямо в редакторе: значение подставляется в карточку и участвует в сортировке — самые дорогие работы автоматически получают крупные плитки.</li>
+    <li><b>Приём заявок</b> без внешних сервисов: заявка сохраняется в админке, потом подключается дублирование в мессенджер.</li>
+    <li><b>Фильтры из категорий</b>: добавили категорию — на сайте появилась новая кнопка, править код не нужно.</li>
+    <li><b>Мобильная версия</b> и работа без интернет-зависимостей: сайт не тянет сторонние шрифты и скрипты.</li>
+  </ul>
+  <p class="note">Демонстрационная сборка. Фотографии работ взяты из открытой группы ВКонтакте и принадлежат кондитеру; контакты, цены и тексты уточняются перед публикацией.</p>
+</section>
+
+<footer>
+  <p>Кейс собран как демонстрация подхода. Такой же сайт разворачивается на хостинге клиента за несколько дней.</p>
+</footer>
+
+</div>
+</body>
+</html>
