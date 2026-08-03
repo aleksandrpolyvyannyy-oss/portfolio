@@ -48,7 +48,10 @@ header.top{position:sticky; top:0; z-index:60; display:flex; justify-content:spa
 header.top.stuck{border-bottom-color:var(--line)}
 .brand{font-weight:700; font-size:18px; letter-spacing:-.03em}
 .brand em{font-style:normal; color:var(--hurma)}
-.top a{color:var(--ink); text-decoration:none; font-size:15px; font-weight:600}
+.top-btn{background:var(--hurma); color:#fff; text-decoration:none; font-size:15px; font-weight:700;
+  padding:11px 22px; border-radius:99px; white-space:nowrap;
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease)}
+.top-btn:hover{transform:translateY(-1px); box-shadow:0 8px 18px -8px var(--hurma)}
 
 /* ---------- герой: заголовок + сразу витрина ---------- */
 .hero{padding:38px 0 26px; display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:end}
@@ -56,9 +59,12 @@ header.top.stuck{border-bottom-color:var(--line)}
 .hero h1 em{font-style:normal; color:var(--hurma)}
 .hero .sub{font-size:18px; color:var(--muted); margin:16px 0 0; max-width:34ch}
 .chips{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0; padding:0; list-style:none}
-.chips li{font-size:14px; font-weight:600; padding:8px 15px; border-radius:99px;
-  background:var(--card); border:1px solid var(--line)}
-.chips li.acc{background:var(--matcha); border-color:var(--matcha); color:#fff}
+.chip{font:600 14px/1 inherit; padding:11px 17px; border-radius:99px; cursor:pointer;
+  background:var(--card); border:1px solid var(--line); color:var(--ink);
+  transition:.22s var(--ease)}
+.chip:hover{border-color:var(--hurma); transform:translateY(-1px)}
+.chip.acc{background:var(--matcha); border-color:var(--matcha); color:#fff}
+.chip.acc:hover{border-color:var(--matcha); filter:brightness(1.08)}
 .hero-img{position:relative; border-radius:20px; overflow:hidden; box-shadow:var(--shadow);
   animation:heroIn 1s var(--ease) both}
 @keyframes heroIn{ from{ opacity:0; transform:translateY(24px) scale(.98) } to{ opacity:1; transform:none } }
@@ -76,7 +82,7 @@ header.top.stuck{border-bottom-color:var(--line)}
 
 /* ---------- ленты ---------- */
 .strip{background:var(--matcha); color:#fff; padding:15px 0; margin:30px 0 0; overflow:hidden}
-.strip-track{display:flex; width:max-content; animation:slide 75s linear infinite}
+.strip-track{display:flex; width:max-content; animation:slide 40s linear infinite; will-change:transform}
 .strip-track span{white-space:nowrap; font-weight:600; font-size:16px; letter-spacing:.01em}
 @keyframes slide{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 .strip:hover .strip-track{animation-play-state:paused}
@@ -227,7 +233,7 @@ dialog.lb[open]{animation:pop .3s var(--ease)}
 <div class="wrap">
   <header class="top">
     <div class="brand">Бенто и торты <em>· Пушкин · Славянка · Шушары</em></div>
-    <a href="#zakaz">Заказать</a>
+    <a class="top-btn" href="#zakaz">Заказать торт</a>
   </header>
 
   <div class="hero">
@@ -235,12 +241,12 @@ dialog.lb[open]{animation:pop .3s var(--ease)}
       <h1>Бенто-торты<br>и торты <em>к завтра</em></h1>
       <p class="sub">Пеку в Пушкине. Привожу в Славянку, Шушары и по Петербургу. Надпись на торте — любая, какую придумаете.</p>
       <ul class="chips">
-        <li class="acc">Бенто от 1 600 ₽</li>
-        <li>Торты от 2 900 ₽</li>
-        <li>Свадебные от 7 200 ₽</li>
+        <li><button type="button" class="chip acc" data-goto="bento">Бенто от 1 600 ₽</button></li>
+        <li><button type="button" class="chip" data-goto="torty">Торты от 2 900 ₽</button></li>
+        <li><button type="button" class="chip" data-goto="svadba">Свадебные от 7 200 ₽</button></li>
       </ul>
       <div class="cta-row">
-        <a class="btn" href="#vitrina">Смотреть 22 работ</a>
+        <a class="btn" href="#vitrina">Смотреть работы</a>
         <a class="btn line" href="https://vk.com/club212400999" target="_blank" rel="noopener">Написать в ВК</a>
       </div>
     </div>
@@ -574,6 +580,15 @@ dialog.lb[open]{animation:pop .3s var(--ease)}
       if(document.startViewTransition){document.startViewTransition(apply);} else {apply();}
     });
   });
+  // плашки цен в первом экране включают нужный фильтр и ведут к витрине
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click', function(){
+      var target = document.querySelector('.filters button[data-f="' + c.dataset.goto + '"]');
+      if(target) target.click();
+      document.getElementById('vitrina').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
   document.querySelectorAll('.want').forEach(function(w){
     w.addEventListener('click', function(){
       var t=document.getElementById('comment');
