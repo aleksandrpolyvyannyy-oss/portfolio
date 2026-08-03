@@ -296,6 +296,9 @@ dialog.lb[open]{animation:zoomIn .32s var(--ease)}
     transition-duration:.001ms !important; scroll-behavior:auto !important}
   .reveal,.rise>*{opacity:1 !important; transform:none !important}
   .no-timeline .reveal{opacity:1; transform:none}
+  /* бегущая строка — сознательное исключение по требованию заказчика:
+     движется даже при системном «уменьшить движение» */
+  .marquee-track{animation:slide 45s linear infinite !important}
 }
 </style>
 </head>

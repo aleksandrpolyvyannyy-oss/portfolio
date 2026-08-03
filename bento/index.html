@@ -224,6 +224,8 @@ dialog.lb[open]{animation:pop .3s var(--ease)}
     transition-duration:.001ms !important; scroll-behavior:auto !important}
   .reveal{opacity:1 !important; transform:none !important}
   .no-timeline .reveal{opacity:1; transform:none}
+  /* бегущая строка — сознательное исключение по требованию заказчика */
+  .strip-track{animation:slide 40s linear infinite !important}
 }
 </style>
 </head>
