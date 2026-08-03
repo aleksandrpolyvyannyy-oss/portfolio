@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Проверка анимаций в браузере</title>
+<style>
+  body{font:16px/1.6 'Segoe UI',system-ui,sans-serif; background:#F6F1E9; color:#1C1A18;
+       margin:0; padding:28px 20px 60px}
+  .wrap{max-width:640px; margin:0 auto}
+  h1{font-size:26px; margin:0 0 6px}
+  .verdict{font-size:20px; font-weight:700; padding:18px 20px; border-radius:8px; margin:18px 0}
+  .ok{background:#E4F0E6; color:#1F5C2E; border:2px solid #3A7A4A}
+  .off{background:#FBEAE7; color:#8C2B22; border:2px solid #B3372E}
+  h2{font-size:18px; margin:30px 0 8px}
+  .box{background:#fff; border:1px solid #E4D9C8; border-radius:8px; padding:16px 18px; margin:10px 0}
+  .track{overflow:hidden; border-top:1px solid #E4D9C8; border-bottom:1px solid #E4D9C8; padding:12px 0}
+  .track div{display:flex; width:max-content; animation:slide 12s linear infinite}
+  .track span{white-space:nowrap; font-weight:600; color:#7B3B45}
+  @keyframes slide{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+  .dot{width:34px; height:34px; border-radius:50%; background:#7B3B45; animation:run 2s linear infinite}
+  @keyframes run{0%{transform:translateX(0)} 50%{transform:translateX(220px)} 100%{transform:translateX(0)}}
+  code{background:#EEE9DF; padding:2px 6px; border-radius:4px; font-size:14px}
+  ol{padding-left:22px} li{margin:7px 0}
+  .small{color:#5E6B6E; font-size:14.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Проверка: работают ли анимации</h1>
+  <p class="small">Откройте эту страницу в том же браузере, где смотрите сайт.</p>
+
+  <div id="verdict" class="verdict">Проверяю…</div>
+
+  <h2>1. Бегущая строка (как на сайте)</h2>
+  <div class="box track">
+    <div>
+      <span>Свадебные торты · Капкейки · Торты с ягодами · Доставка в Славянку · Заказ на завтра · </span>
+      <span>Свадебные торты · Капкейки · Торты с ягодами · Доставка в Славянку · Заказ на завтра · </span>
+    </div>
+  </div>
+
+  <h2>2. Кружок должен ездить влево-вправо</h2>
+  <div class="box"><div class="dot"></div></div>
+
+  <h2>3. Что говорит браузер</h2>
+  <div class="box" id="tech"></div>
+
+  <h2>Если анимаций нет</h2>
+  <p>Значит в системе включён режим «уменьшить движение». Сайт его намеренно уважает — так делают ради людей, которым движение на экране вызывает недомогание.</p>
+  <ol>
+    <li><b>Windows 11:</b> Параметры → Специальные возможности → Визуальные эффекты → включить <b>«Эффекты анимации»</b></li>
+    <li><b>Windows 10:</b> Параметры → Специальные возможности → Дисплей → <b>«Показывать анимацию в Windows»</b></li>
+    <li><b>macOS:</b> Системные настройки → Универсальный доступ → Дисплей → снять <b>«Уменьшение движения»</b></li>
+    <li><b>iPhone:</b> Настройки → Универсальный доступ → Движение → выключить <b>«Уменьшение движения»</b></li>
+    <li><b>Android:</b> Настройки → Спец. возможности → <b>«Удалить анимации»</b> выключить</li>
+  </ol>
+  <p class="small">После изменения обновите страницу — перезапускать браузер не нужно.</p>
+</div>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var v = document.getElementById('verdict');
+  if (reduce) {
+    v.className = 'verdict off';
+    v.textContent = 'Анимации у вас ОТКЛЮЧЕНЫ в системе. Поэтому лента на сайте стоит.';
+  } else {
+    v.className = 'verdict ok';
+    v.textContent = 'Анимации ВКЛЮЧЕНЫ. Строка ниже должна ехать, кружок — кататься.';
+  }
+  var dot = document.querySelector('.dot');
+  var cs = getComputedStyle(dot);
+  var x1 = dot.getBoundingClientRect().x;
+  setTimeout(function(){
+    var x2 = dot.getBoundingClientRect().x;
+    document.getElementById('tech').innerHTML =
+      '<div>Режим «уменьшить движение»: <b>' + (reduce ? 'включён' : 'выключен') + '</b></div>' +
+      '<div>Длительность анимации: <code>' + cs.animationDuration + '</code></div>' +
+      '<div>Кружок сдвинулся за секунду: <b>' + Math.abs(Math.round(x2 - x1)) + ' px</b></div>' +
+      '<div>Поддержка scroll-анимаций: <b>' + (CSS.supports('animation-timeline: view()') ? 'есть' : 'нет, включится запасной вариант') + '</b></div>';
+  }, 1000);
+})();
+</script>
+</body>
+</html>
